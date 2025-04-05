@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package order;
+option go_package = "github.com/mwdev22/order-processor/proto/gen/orderpb";
+
+service OrderService {
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  string order_id = 1;
+  string status = 2;
+  int64 amount = 3;
+  string currency = 4;
+  string created_at = 5;
+}
+
+message ListOrdersRequest {
+  string user_id = 1;
+}
+
+message ListOrdersResponse {
+  repeated GetOrderResponse orders = 1;
+}

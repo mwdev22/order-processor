@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package payment;
+
+option go_package = "github.com/mwdev22/order-processor/proto/gen/paymentpb";
+
+// only read methods, creating payments will be done via kafka
+  
+service PaymentService {
+    rpc GetPayment(GetPaymentRequest) returns (Payment);
+    rpc GetUserPayments(GetUserPaymentsRequest) returns (GetUserPaymentsResponse);
+  }
+
+message Payment {
+    string payment_id = 1;
+    string order_id = 2;
+    string status = 3;
+    string method = 4;
+    string created_at = 5;
+}
+  
+  message GetPaymentRequest {
+    string payment_id = 1;
+  }
+  
+  message GetUserPaymentsRequest {
+    string user_id = 1;
+  }
+  
+  message GetUserPaymentsResponse {
+    repeated Payment payments = 1;
+  }
+  
