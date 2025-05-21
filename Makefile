@@ -41,9 +41,9 @@ run:
 
 
 gen:
-	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen proto/order.proto
-	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen proto/payment.proto
-	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen proto/notification.proto
+	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen order.proto
+	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen payment.proto
+	protoc --go_out=paths=source_relative:proto/gen --go-grpc_out=paths=source_relative:proto/gen notification.proto
 
 
 # Migration commands

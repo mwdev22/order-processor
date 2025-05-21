@@ -9,6 +9,7 @@ option go_package = "github.com/mwdev22/order-processor/proto/gen/paymentpb";
 service PaymentService {
     rpc GetPayment(GetPaymentRequest) returns (Payment);
     rpc GetUserPayments(GetUserPaymentsRequest) returns (GetUserPaymentsResponse);
+    rpc CreatePaymentSession(CreateSessionRequest) returns (CreateSessionResponse);
   }
 
 message Payment {
@@ -18,16 +19,24 @@ message Payment {
     string method = 4;
     string created_at = 5;
 }
+
+message CreateSessionRequest {
+  string oreder_id = 1;
+}
+
+message CreateSessionResponse {
+  string uri = 1;
+}
   
-  message GetPaymentRequest {
+message GetPaymentRequest {
     string payment_id = 1;
   }
   
-  message GetUserPaymentsRequest {
+message GetUserPaymentsRequest {
     string user_id = 1;
   }
   
-  message GetUserPaymentsResponse {
+message GetUserPaymentsResponse {
     repeated Payment payments = 1;
   }
   
